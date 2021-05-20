@@ -356,23 +356,3 @@ void test_hash_map_apply_if(){
   free_pair_list (&char_int_pairs);
 }
 
-int main(){
-  printf ("Start testing...\n");
-  printf ("performing test_hash_map_insert \n");
-  test_hash_map_insert();
-  printf ("Test finished\n");
-  printf ("performing test_hash_map_at \n");
-  test_hash_map_at();
-  printf ("Test finished\n");
-  printf ("performing test_hash_map_erase \n");
-  test_hash_map_erase();
-  printf ("Test finished\n");
-  printf ("performing test_hash_map_load_factor \n");
-  test_hash_map_get_load_factor();
-  printf ("Test finished\n");
-  printf ("performing test_hash_map_apply_if \n");
-  test_hash_map_apply_if();
-  printf ("Finish all tests!");
-  return 0;
-}
-
