@@ -45,10 +45,10 @@ void vector_free(vector **p_vector){
   vec = *p_vector;
   for (size_t i = 0; i < vec->size; ++i)
     {
-      free (vec->data[i]);
+      vec->elem_free_func(&(vec->data[i]));
     }
-  free (vec->data);
-  free (vec);
+  free ((*p_vector)->data);
+  free (*p_vector);
   *p_vector = NULL;
 }
 
@@ -161,17 +161,17 @@ int vector_erase(vector *vector, size_t ind){
   if(vector == NULL){
       return FAIL;
   }
+  if(vector_get_load_factor (vector) < VECTOR_MIN_LOAD_FACTOR){
+      if(vector_decrease_cap (vector) == 0){
+          return FAIL; // realloc fails.
+        }
+    }
   vector->elem_free_func(&(vector->data[ind]));// frees the element.
   for (size_t i = ind +1; i <vector->size ; ++i) // fixing the data array.
     {
       vector->data[i-1] = vector->data[i];
     }
   vector->size -= 1;
-  if(vector_get_load_factor (vector) < VECTOR_MIN_LOAD_FACTOR){
-    if(vector_decrease_cap (vector) == 0){
-        return FAIL; // realloc fails.
-    }
-  }
   return SUCSSES;
 }
 

@@ -37,6 +37,8 @@ hashmap *hashmap_alloc (hash_func func){
     {
       vector* vec = vector_alloc (pair_copy, pair_cmp, pair_free);
       if (vec == NULL){
+          free (buckets);
+          free(map);
           return NULL;
       }
       map->buckets[i] = vec;
@@ -49,11 +51,11 @@ hashmap *hashmap_alloc (hash_func func){
  * @param p_hash_map pointer to dynamically allocated pointer to hash_map.
  */
 void hashmap_free (hashmap **p_hash_map){
-  hashmap * ptr = *p_hash_map;
-  for (size_t  i = 0; i < ptr->size; ++i)
+  for (size_t  i = 0; i < (*p_hash_map)->capacity; ++i)
     {
-      vector_free (&(ptr->buckets[i])); //ptr->ptr
+      vector_free (&((*p_hash_map)->buckets[i])); //ptr->ptr
     }
+  free ((*p_hash_map)->buckets);
   free (*p_hash_map);
   *p_hash_map = NULL;}
 
@@ -113,7 +115,11 @@ int hashmap_increase_decrease(hashmap* hash_map, int flag){
     {
       vector * vec = vector_alloc (pair_copy, pair_cmp, pair_free);
       if (vec == NULL){
-          free (new_bucket);
+          for (size_t j = 0; j < i; ++j)
+            {
+              vector_free (&(new_bucket[j])); // release all previous vectors.
+            }
+          free (new_bucket); // release bucket_malloc.
           return 0;
       }
       new_bucket[i] = vec;
@@ -122,7 +128,7 @@ int hashmap_increase_decrease(hashmap* hash_map, int flag){
       for (size_t  i = 0; i < new_capacity; ++i) //free all the vector in case
         // of failure.
         {
-          vector_free (&new_bucket[i]);
+          vector_free (&(new_bucket[i]));
         }
       free (new_bucket);
       return 0;
