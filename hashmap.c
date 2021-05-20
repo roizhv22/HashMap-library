@@ -144,7 +144,8 @@ int hashmap_increase_decrease(hashmap* hash_map, int flag){
  * The function returns the value associated with the given key.
  * @param hash_map a hash map.
  * @param key the key to be checked.
- * @return the value associated with key if exists, NULL otherwise (the value itself,
+ * @return the value associated with key if exists, NULL otherwise
+ * (the value itself,
  * not a copy of it).
  */
 valueT hashmap_at (const hashmap *hash_map, const_keyT key){

@@ -9,9 +9,11 @@
 
 /**
  * Dynamically allocates a new vector.
- * @param elem_copy_func func which copies the element stored in the vector (returns
+ * @param elem_copy_func func which copies the element stored in the vector
+ * (returns
  * dynamically allocated copy).
- * @param elem_cmp_func func which is used to compare elements stored in the vector.
+ * @param elem_cmp_func func which is used to compare elements stored in the
+ * vector.
  * @param elem_free_func func which frees elements stored in the vector.
  * @return pointer to dynamically allocated vector.
  * @if_fail return NULL.
