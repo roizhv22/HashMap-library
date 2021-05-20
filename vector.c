@@ -49,7 +49,7 @@ void vector_free(vector **p_vector){
     }
   free (vec->data);
   free (vec);
-  p_vector = NULL;
+  *p_vector = NULL;
 }
 
 /**
