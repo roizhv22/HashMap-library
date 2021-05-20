@@ -1,5 +1,18 @@
-
 #include "test_suite.h"
+#include "hashmap.h"
+#include "test_pairs.h"
+#include "hash_funcs.h"
+#include "pair.h"
+
+#define NUM_OF_PAIRS 250 //careful from char overflow as some
+//functions checks the char pairs and we can only have 256 keys.
+#define INT_KEY_BASE_VALUE 100
+#define FLOAT_VALUE_BASE_VAL 50.5
+#define DELTA_FOR_FLOAT_VAL 6.6
+#define INT_VALUE_BASE 500
+#define INT_VALUE_DELTA 30
+#define CHAR_KEY_BASE 6
+#define NUM_OF_DIGITS 10
 
 /*
  * creates MUM_OF_PAIRS int-float general pairs. FREE NEEDED!
