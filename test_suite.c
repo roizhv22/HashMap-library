@@ -114,7 +114,8 @@ void general_insert_test (hashmap* hash_map,pair** pairs, size_t num_of_pairs)
 
 /**
  * This function checks the hashmap_insert function of the hashmap library.
- * If hashmap_insert fails at some points, the functions exits with exit code 1.
+ * If hashmap_insert fails at some points, the functions exits with exit code
+ * 1.
  */
 void test_hash_map_insert(void){
   pair** char_int_pairs = create_char_int_pairs(NUM_OF_CHAR_INT_PAIRS);

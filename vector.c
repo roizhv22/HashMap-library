@@ -151,8 +151,9 @@ int vector_push_back(vector *vector, const void *value){
 
 
 /**
- * Removes the element at the given index from the vector. alters the indices of the remaining
- * elements so that there are no empty indices in the range [0, size-1] (inclusive).
+ * Removes the element at the given index from the vector. alters the indices
+ * of the remaining elements so that there are no empty indices in the range
+ * [0, size-1] (inclusive).
  * @param vector a pointer to vector.
  * @param ind the index of the element to be removed.
  * @return 1 if the removing has been done successfully, 0 otherwise.

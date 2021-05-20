@@ -234,15 +234,19 @@ int hashmap_erase (hashmap *hash_map, const_keyT key){
 }
 
 /**
- * This function receives a hashmap and 2 functions, the first checks a condition on the keys,
- * and the seconds apply some modification on the values. The function should apply the modification
+ * This function receives a hashmap and 2 functions, the first checks a
+ * condition on the keys,and the seconds apply some modification on the values.
+ * The function should apply the modification
  * only on the values that are associated with keys that meet the condition.
  *
- * Example: if the hashmap maps char->int, keyT_func checks if the char is a capital letter (A-Z),
- * and val_t_func multiples the number by 2, hashmap_apply_if will change the map:
- * {('C',2),('#',3),('X',5)}, to: {('C',4),('#',3),('X',10)}, and the return value will be 2.
+ * Example: if the hashmap maps char->int, keyT_func checks if the char is a
+ * capital letter (A-Z),and val_t_func multiples the number by 2,
+ * hashmap_apply_if will change the map:
+ * {('C',2),('#',3),('X',5)}, to: {('C',4),('#',3),('X',10)}, and the return
+ * value will be 2.
  * @param hash_map a hashmap
- * @param keyT_func a function that checks a condition on keyT and return 1 if true, 0 else
+ * @param keyT_func a function that checks a condition on keyT and return 1
+ * if true, 0 else
  * @param valT_func a function that modifies valueT, in-place
  * @return number of changed values
  */
