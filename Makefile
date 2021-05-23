@@ -28,6 +28,6 @@ hashmap.o: hashmap.c hashmap.h
 test_suite.o: test_suite.c test_suite.h
 	$(CC) $(CCFLAGS) -c $<
 
-clear:
+clean:
 	rm *.o *.a
 
