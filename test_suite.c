@@ -84,7 +84,7 @@ void general_insert_test (hashmap* hash_map,pair** pairs, size_t num_of_pairs)
       assert(hash_map->size == i+1); // checks size increase correctly.
       //standard insertion test.
       double prev_load = (double) (hash_map->size-1)/hash_map->capacity;
-      if (prev_load>HASH_MAP_MAX_LOAD_FACTOR){
+      if (prev_load>=HASH_MAP_MAX_LOAD_FACTOR){
           assert(hash_map->capacity == old_capacity*HASH_MAP_GROWTH_FACTOR);
           old_capacity = hash_map->capacity;
           //checks that the capacity increase is performing as expected.
@@ -243,7 +243,7 @@ void general_erase_test(hashmap* hash_map, pair** pairs, size_t num_of_pairs){
       initial_hash_size--;
       assert(hash_map->size == initial_hash_size);
       double prev_load = (double)(hash_map->size+1)/hash_map->capacity;
-      if (prev_load<HASH_MAP_MIN_LOAD_FACTOR){
+      if (prev_load<=HASH_MAP_MIN_LOAD_FACTOR){
           assert(initial_hash_capacity/2 == hash_map->capacity);
           initial_hash_capacity/=2;
       }
@@ -310,7 +310,7 @@ void test_hash_map_get_load_factor(void){
     {
       double load = (double)size_test/capacity_test;
       assert(load == hashmap_get_load_factor (hash_map_test));
-      if (load>HASH_MAP_MAX_LOAD_FACTOR){
+      if (load>=HASH_MAP_MAX_LOAD_FACTOR){
         capacity_test*=  HASH_MAP_GROWTH_FACTOR;
       }
       hashmap_insert (hash_map_test, pairs[i]);
@@ -321,7 +321,7 @@ void test_hash_map_get_load_factor(void){
     {
       double load = (double)size_test/capacity_test;
       assert(load == hashmap_get_load_factor (hash_map_test));
-      if (load<HASH_MAP_MIN_LOAD_FACTOR){
+      if (load<=HASH_MAP_MIN_LOAD_FACTOR){
           capacity_test/= HASH_MAP_GROWTH_FACTOR;
         }
       hashmap_erase(hash_map_test, pairs[i]->key);
@@ -390,3 +390,4 @@ void test_hash_map_apply_if(){
   free_pair_list (&int_float_pairs, NUM_OF_CHAR_INT_PAIRS);
   free_pair_list (&char_int_pairs, NUM_OF_CHAR_INT_PAIRS);
 }
+

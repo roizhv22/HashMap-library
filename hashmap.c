@@ -179,7 +179,7 @@ int hashmap_insert (hashmap *hash_map, const pair *in_pair){
   if (hashmap_at (hash_map, in_pair->key) != NULL){
       return 0;
   }
-  if (hashmap_get_load_factor (hash_map) > HASH_MAP_MAX_LOAD_FACTOR)
+  if (hashmap_get_load_factor (hash_map) >= HASH_MAP_MAX_LOAD_FACTOR)
     {
       if (hashmap_increase_decrease (hash_map, INCREASE) != 1)
         {
@@ -213,7 +213,7 @@ int hashmap_erase (hashmap *hash_map, const_keyT key){
   if (hashmap_at (hash_map, key) == NULL){
       return 0;
   }
-  if (hashmap_get_load_factor (hash_map)<HASH_MAP_MIN_LOAD_FACTOR){
+  if (hashmap_get_load_factor (hash_map)<=HASH_MAP_MIN_LOAD_FACTOR){
       if (hashmap_increase_decrease (hash_map, DECREASE) != 1){
           return 0;
       }
