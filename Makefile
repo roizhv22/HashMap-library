@@ -1,4 +1,4 @@
-.PHONY : all, clean
+.PHONY : all clean
 
 CCFLAGS = -Wall -Wextra -Wvla -Werror -g -lm -std=c99
 CC = gcc
@@ -29,5 +29,5 @@ test_suite.o: test_suite.c test_suite.h
 	$(CC) $(CCFLAGS) -c $<
 
 clean:
-	rm *.o *.a
+	rm -f *.o *.a
 
