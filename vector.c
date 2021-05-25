@@ -140,14 +140,15 @@ int vector_push_back(vector *vector, const void *value){
   if(vector == NULL){
     return FAIL;
   }
-  void* new_data = vector->elem_copy_func(value); //TODO checks fails?
-  vector->data[vector->size] = new_data;
-  vector->size += 1;
-  if(vector_get_load_factor (vector)>VECTOR_MAX_LOAD_FACTOR){
+  if(vector_get_load_factor (vector)>=VECTOR_MAX_LOAD_FACTOR){
       if(vector_increase_cap (vector) == 0){
           return FAIL; //case of allocation failure.
         }
     }
+  void* new_data = vector->elem_copy_func(value); //TODO checks fails?
+  vector->data[vector->size] = new_data;
+  vector->size += 1;
+
   return SUCSSES;
 }
 
@@ -164,7 +165,10 @@ int vector_erase(vector *vector, size_t ind){
   if(vector == NULL){
       return FAIL;
   }
-  if(vector_get_load_factor (vector) < VECTOR_MIN_LOAD_FACTOR){
+  if(ind >= vector->size){
+      return FAIL; // no elemnts to delete.
+  }
+  if(vector_get_load_factor (vector) <= VECTOR_MIN_LOAD_FACTOR){
       if(vector_decrease_cap (vector) == 0){
           return FAIL; // realloc fails.
         }
@@ -188,6 +192,4 @@ void vector_clear(vector *vector){
       vector_erase (vector, 0);
     }
 }
-
-
 
