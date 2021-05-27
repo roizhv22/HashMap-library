@@ -173,7 +173,10 @@ valueT hashmap_at (const hashmap *hash_map, const_keyT key){
 * @return returns 1 for successful insertion, 0 otherwise.
 */
 int hashmap_insert (hashmap *hash_map, const pair *in_pair){
-  if (in_pair == NULL){
+  if ((in_pair == NULL) || (hash_map == NULL)){
+      return 0;
+  }
+  if((in_pair->value == NULL) || (in_pair->key == NULL)){
       return 0;
   }
   if (hashmap_at (hash_map, in_pair->key) != NULL){

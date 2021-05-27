@@ -3,7 +3,7 @@
 CCFLAGS = -Wall -Wextra -Wvla -Werror -g -lm -std=c99
 CC = gcc
 LIB_STANDARD_OBJECTS = vector.o hashmap.o pair.o
-LIB_TESTS_OBJECTS = vector.o hashmap.o pair.o test_suite.o
+LIB_TESTS_OBJECTS = vector.o hashmap.o pair.o test_suite.o test_pairs.h hash_funcs.h
 
 all: $(LIB_TESTS_OBJECTS)
 	ar rcs libhashmap.a $(LIB_STANDARD_OBJECTS)

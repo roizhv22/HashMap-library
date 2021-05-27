@@ -2,7 +2,6 @@
 #include "hashmap.h"
 #include "test_pairs.h"
 #include "hash_funcs.h"
-#include "pair.h"
 
 #define NUM_OF_CHAR_INT_PAIRS 200 //careful from char overflow as some
 //functions checks the char pairs and we can only have 256 keys.
