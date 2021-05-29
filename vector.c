@@ -21,6 +21,10 @@
 vector *vector_alloc(vector_elem_cpy elem_copy_func,
                      vector_elem_cmp elem_cmp_func,
                      vector_elem_free elem_free_func){
+  if((elem_free_func == NULL) || (elem_cmp_func == NULL) || (elem_copy_func
+  == NULL)){
+      return NULL;
+  }
   vector* vec = malloc (sizeof (vector));
   if(vec == NULL){
     return NULL;
@@ -123,6 +127,9 @@ int vector_decrease_cap(vector* vec){
  * @return the vector's load factor, -1 if the function failed.
  */
 double vector_get_load_factor(const vector *vector){
+  if(vector == NULL){
+      return -1;
+  }
   if(vector->capacity <=0){
       return -1;
   }
@@ -137,7 +144,7 @@ double vector_get_load_factor(const vector *vector){
  * @return 1 if the adding has been done successfully, 0 otherwise.
  */
 int vector_push_back(vector *vector, const void *value){
-  if(vector == NULL){
+  if((vector == NULL) || (value == NULL)){
     return FAIL;
   }
   if(vector_get_load_factor (vector)>=VECTOR_MAX_LOAD_FACTOR){

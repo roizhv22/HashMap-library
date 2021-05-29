@@ -37,6 +37,10 @@ hashmap *hashmap_alloc (hash_func func){
     {
       vector* vec = vector_alloc (pair_copy, pair_cmp, pair_free);
       if (vec == NULL){
+          for (size_t j = 0; j <i ; ++j)
+            {
+              vector_free (&(map->buckets[j]));
+            }
           free (buckets);
           free(map);
           return NULL;
@@ -65,6 +69,9 @@ void hashmap_free (hashmap **p_hash_map){
 * @return the hash map's load factor, -1 if the function failed.
 */
 double hashmap_get_load_factor (const hashmap *hash_map){
+  if (hash_map == NULL){
+      return -1;
+  }
   if(hash_map->capacity <= 0){
       return -1;
   }
@@ -256,6 +263,9 @@ int hashmap_erase (hashmap *hash_map, const_keyT key){
  */
 int hashmap_apply_if (const hashmap *hash_map, keyT_func keyT_func,
                       valueT_func valT_func){
+  if((hash_map == NULL) || (keyT_func == NULL) || (valT_func == NULL)){
+      return 0;
+  }
   int changed_vals = 0;
   for (size_t  i = 0; i <hash_map->capacity ; ++i)
     {
