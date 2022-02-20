@@ -1,10 +1,14 @@
-# C programing workshop final exercise - Hash map implementation (include vector's implementation and tests).
+# HashMap library
 
-In this final exercise we were required to implement a generic hash map static library with all the needed features, to support the chaining procedure (each cell in the table is a vector of key-value pairs – simple struct). 
+### This library implements changing based generic HashMap. The map is based on a dynamic vector to store data in each cell (O(1) in avarage). 
 
-This is dynamically allocated hash map and vector. During the insertion operations the table will change it's size in order to maintain the required performance to support the O(1) (in average) operations, thus keeping the load factor as needed by a given threshold.
+### Any changes in this structure can be tweaked according to the user need, please review the tests library that was added in order to verify that the program execute as designed. 
 
-There is also a feature of apply_if – if a given key fulfills a given condition, a function will be called on its value. 
+## Usage
+### makefile was added to compile the library, phony commands was added as well.
+### `makefile all` will compile the Hashmap library and the test library.
+### `clear` command will delete all the files.
+### `libhashmap.a` command will complie only the library. 
 
-We were also required to write a full test suite for the project, I ran some tests with different key-value types and large inputs. 
-As you may observe I written a makefile to compile and create the library with ease as well. 
+### Note that makefile is require gcc isntalled on your machine. 
+
