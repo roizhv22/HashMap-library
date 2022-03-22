@@ -1,6 +1,6 @@
 # HashMap library
 
-### This library implements changing based generic HashMap. The map is based on a dynamic vector to store data in each cell (O(1) in avarage). 
+### This library implements changing based generic HashMap. The map is based on a dynamic vector to store data in each cell. 
 
 ### Any changes in this structure can be tweaked according to the user need, please review the tests library that was added in order to verify that the program execute as designed. 
 
